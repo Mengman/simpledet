@@ -120,7 +120,7 @@ def get_config(is_train):
         train_symbol = train_sym
         test_symbol = test_sym
 
-        from_scratch = False
+        from_scratch = True
         random = True
         memonger = False
         memonger_until = "stage3_unit21_plus"
@@ -128,7 +128,7 @@ def get_config(is_train):
         class pretrain:
             prefix = "pretrain_model/resnet-v1-50"
             epoch = 0
-            fixed_param = ["conv0", "stage1", "gamma", "beta"]
+            # fixed_param = ["conv0", "stage1", "gamma", "beta"]
 
 
     class OptimizeParam:
