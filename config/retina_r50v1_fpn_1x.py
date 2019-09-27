@@ -7,16 +7,16 @@ from mxnext.complicate import normalizer_factory
 
 def get_config(is_train):
     class General:
-        log_frequency = 10
+        log_frequency = 100
         name = __name__.rsplit("/")[-1].rsplit(".")[-1]
-        batch_image = 2 if is_train else 1
+        batch_image = 8 if is_train else 1
         fp16 = False
 
 
     class KvstoreParam:
         kvstore     = "nccl"
         batch_image = General.batch_image
-        gpus        = [0, 1, 2, 3, 4, 5, 6, 7]
+        gpus        = [0, 1]
         fp16        = General.fp16
 
 
@@ -121,7 +121,7 @@ def get_config(is_train):
         test_symbol = test_sym
 
         from_scratch = True
-        random = True
+        random = False
         memonger = False
         memonger_until = "stage3_unit21_plus"
 
@@ -176,13 +176,13 @@ def get_config(is_train):
 
 
     class ResizeParam:
-        short = 800
-        long = 1333
+        short = 400
+        long = 600
 
 
     class PadParam:
-        short = 800
-        long = 1333
+        short = 400
+        long = 600
         max_num_gt = 100
 
 
@@ -192,8 +192,8 @@ def get_config(is_train):
 
         class _generate:
             def __init__(self):
-                self.short = (100, 50, 25, 13, 7)
-                self.long = (167, 84, 42, 21, 11)
+                self.short = (50, 25, 13, 7, 4)
+                self.long = (75, 38, 19, 10, 5)
                 self.stride = (8, 16, 32, 64, 128)
 
             scales = (4 * 2 ** 0, 4 * 2 ** (1.0 / 3.0), 4 * 2 ** (2.0 / 3.0))

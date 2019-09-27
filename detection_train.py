@@ -135,8 +135,8 @@ def train_net(config):
         pModel.process_weight(sym, arg_params, aux_params)
 
     # merge batch normalization to save memory in fix bn training
-    from utils.graph_optimize import merge_bn
-    sym, arg_params, aux_params = merge_bn(sym, arg_params, aux_params)
+    # from utils.graph_optimize import merge_bn
+    # sym, arg_params, aux_params = merge_bn(sym, arg_params, aux_params)
 
     if pModel.random:
         import time
