@@ -9,7 +9,7 @@ def get_config(is_train):
     class General:
         log_frequency = 100
         name = __name__.rsplit("/")[-1].rsplit(".")[-1]
-        batch_image = 8 if is_train else 1
+        batch_image = 6 if is_train else 1
         fp16 = False
 
 
@@ -134,7 +134,7 @@ def get_config(is_train):
     class OptimizeParam:
         class optimizer:
             type = "sgd"
-            lr = 0.005 / 8 * len(KvstoreParam.gpus) * KvstoreParam.batch_image
+            lr = 0.001 / 8 * len(KvstoreParam.gpus) * KvstoreParam.batch_image
             momentum = 0.9
             wd = 0.0001
             clip_gradient = None
@@ -147,7 +147,7 @@ def get_config(is_train):
 
         class warmup:
             type = "gradual"
-            lr = 0.005 / 8 * len(KvstoreParam.gpus) * KvstoreParam.batch_image / 3
+            lr = 0.001 / 8 * len(KvstoreParam.gpus) * KvstoreParam.batch_image / 3
             iter = 500
 
 

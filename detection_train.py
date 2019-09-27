@@ -84,7 +84,7 @@ def train_net(config):
         data_name=data_name,
         label_name=label_name,
         batch_size=input_batch_size,
-        shuffle=True,
+        shuffle=False,
         kv=kv,
         num_worker=pGen.loader_worker or 12,
         num_collector=pGen.loader_collector or 1,
